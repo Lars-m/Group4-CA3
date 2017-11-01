@@ -33,5 +33,18 @@ public class UserResource {
         
         return gson.toJson(user);
     }
+    
+    @POST
+    @Path("auth")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String loginUser(String json) {
+        Gson gson = new Gson();
+        User user = gson.fromJson(json, User.class);
+        facade.authenticateUser(user.getUserName(), user.getPasswordHash());
+       
+        return gson.toJson(user);
+    }
  
+    
 }
