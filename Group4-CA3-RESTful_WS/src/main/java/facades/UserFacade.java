@@ -51,17 +51,11 @@ public class UserFacade implements IUserFacade {
   
   public IUser createUser(User user){
       EntityManager em = getEntityManager();
-      
-      try 
-      {
-          
-      } 
-      catch(Exception ex){
-          
-      }
-      finally 
-      {
-          em.close();
-      }
+       em.getTransaction().begin();
+       em.persist(user);
+       em.getTransaction().commit();
+       return user;
   }
+  
+  
 }
