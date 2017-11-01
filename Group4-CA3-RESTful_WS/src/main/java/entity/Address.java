@@ -41,11 +41,6 @@ public class Address implements Serializable {
     private String street;
    
     private String description;
-
-    
-    
-    
-    
     
     public String getDescription() {
         return description;
@@ -70,8 +65,6 @@ public class Address implements Serializable {
     public void setStreet(String street) {
         this.street = street;
     }
-    
-    
 
     public int getZip() {
         return zip;

@@ -71,5 +71,10 @@ public class User implements IUser, Serializable{
   public String getUserName() {
     return userName;
   }
+  
+  public void setUserName(String username){
+      this.userName = username;
+  }
+  
      
 }

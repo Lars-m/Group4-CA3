@@ -48,5 +48,20 @@ public class UserFacade implements IUserFacade {
       throw new NotAuthorizedException("Invalid username or password", Response.Status.FORBIDDEN);
     }
   }
-
+  
+  public IUser createUser(User user){
+      EntityManager em = getEntityManager();
+      
+      try 
+      {
+          
+      } 
+      catch(Exception ex){
+          
+      }
+      finally 
+      {
+          em.close();
+      }
+  }
 }
