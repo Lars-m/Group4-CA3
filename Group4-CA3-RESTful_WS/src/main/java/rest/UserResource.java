@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import entity.User;
 import facades.FacadeFactory;
 import facades.UserFacade;
+
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -17,13 +18,14 @@ import javax.ws.rs.core.MediaType;
 public class UserResource
 {
     private UserFacade facade;
-     
+
     public UserResource()
     {
         facade = FacadeFactory.createFacade(UserFacade.class);
     }
 
     /*
+        POST {baseUrl}/api/user
         Adds new user entry.
         @returns: User entity.
      */
@@ -35,11 +37,13 @@ public class UserResource
         Gson gson = new Gson();
         User user = gson.fromJson(json, User.class);
         facade.createUser(user);
-        
+
         return gson.toJson(user);
     }
 
     /*
+        POST {baseUrl}/api/user/auth
+
         Authenticates user.
         @returns: User entity.
      */
@@ -52,9 +56,9 @@ public class UserResource
         Gson gson = new Gson();
         User user = gson.fromJson(json, User.class);
         facade.authenticateUser(user.getUserName(), user.getPasswordHash());
-       
+
         return gson.toJson(user);
     }
- 
-    
+
+
 }

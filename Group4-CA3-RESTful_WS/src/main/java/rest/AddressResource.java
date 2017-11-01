@@ -26,18 +26,21 @@ public class AddressResource
 {
     facade = FacadeFactory.createFacade(AddressFacade.class);
 }
-    
-   /*
-    Gets the user
-    */
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public String getPlaces()
-  {
-      Gson gson = new GsonBuilder().setPrettyPrinting().create();
-      List<Address> listOfAddresses = facade.getAllAddresses();
 
-      return gson.toJson(listOfAddresses);
-  }
+      /*
+         GET {baseUrl}/api/address
+
+         Gets all addresses.
+         @returns: List of addresses.
+      */
+      @GET
+      @Produces(MediaType.APPLICATION_JSON)
+      public String getPlaces()
+      {
+          Gson gson = new GsonBuilder().setPrettyPrinting().create();
+          List<Address> listOfAddresses = facade.getAllAddresses();
+
+          return gson.toJson(listOfAddresses);
+      }
  
 }
