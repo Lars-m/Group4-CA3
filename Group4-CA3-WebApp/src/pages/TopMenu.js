@@ -32,6 +32,7 @@ class TopMenu extends Component {
               <li><Link to="/about">About</Link></li>
               <li><Link to="/user">Page for Users </Link></li>
               <li><Link to="/admin">Page for Admins</Link></li>
+              <li><Link to="/address"> address</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li className="navbar-text" style={{ color: "steelBlue" }}>{logInStatus}</li>

@@ -7,6 +7,7 @@ import UserPage from "./UserPage";
 import AdminPage from "./AdminPage";
 import TopMenu from "./TopMenu";
 import Register from "./Register";
+import Address from "./Address";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/user" component={UserPage} />
         <Route path="/admin" component={AdminPage} />
         <Route path="/register" component={Register} />
+        <Route path="/address" component={Address} />
       </Switch>
     </div>
   )
