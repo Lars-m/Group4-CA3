@@ -1,5 +1,6 @@
 package facades;
 
+import entity.Address;
 import security.IUserFacade;
 import entity.User;
 import java.util.List;
@@ -15,28 +16,21 @@ import security.PasswordStorage;
 /*
     Address Facade to get and set Address entity.
 */
-public class AddressFacade implements IAddressFacade 
+public class AddressFacade 
 {
-
-  EntityManagerFactory emf;
-
-  public AddressFacade(EntityManagerFactory emf) 
+    private EntityManager em;
+    
+  public AddressFacade(EntityManager em) 
   {
-    this.emf = emf;   
+    this.em = em; 
   }
 
-  private EntityManager getEntityManager() 
-  {
-    return emf.createEntityManager();
-  }
- 
   /*
     Gets all addresses.
   */
   public List<Address> getAllAddresses() 
   {
-    List<Address> addressList = getEntityManager().createQuery("SELECT * FROM Address").getResultList();
-      
+    List<Address> addressList = em.createQuery("Select c from ADDRESS c").getResultList();
     return addressList;
   }
   

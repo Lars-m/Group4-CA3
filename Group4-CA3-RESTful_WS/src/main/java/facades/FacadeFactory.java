@@ -11,8 +11,8 @@ import javax.persistence.Persistence;
  */
 public class FacadeFactory 
 {
-    static String productionUnit = "productionUnit";
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory(productionUnit);
+    
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_development");
     private static EntityManager em = emf.createEntityManager();
 
     public static <T> T createFacade(Class<T> facadeClass)
