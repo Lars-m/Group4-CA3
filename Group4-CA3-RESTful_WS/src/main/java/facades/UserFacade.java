@@ -12,7 +12,11 @@ import javax.ws.rs.core.Response;
 import security.IUser;
 import security.PasswordStorage;
 
-public class UserFacade implements IUserFacade {
+/*
+    User Facade to get all User types.
+ */
+public class UserFacade implements IUserFacade
+{
 
   EntityManagerFactory emf;
 
@@ -25,11 +29,16 @@ public class UserFacade implements IUserFacade {
   }
 
   @Override
-  public IUser getUserByUserId(String id) {
+  public IUser getUserByUserId(String id)
+  {
     EntityManager em = getEntityManager();
-    try {
+
+    try
+    {
       return em.find(User.class, id);
-    } finally {
+    }
+    finally
+    {
       em.close();
     }
   }
@@ -48,7 +57,12 @@ public class UserFacade implements IUserFacade {
       throw new NotAuthorizedException("Invalid username or password", Response.Status.FORBIDDEN);
     }
   }
-  
+
+  /*
+    Creates new User entry.
+    @params: User entity.
+    @returns: User.
+   */
   public IUser createUser(User user){
       EntityManager em = getEntityManager();
        em.getTransaction().begin();
@@ -56,7 +70,11 @@ public class UserFacade implements IUserFacade {
        em.getTransaction().commit();
        return user;
   }
-  
+
+  /*
+    Gets all Users.
+    @returns: List of Users.
+   */
   public List<IUser> getAllUsers(){
       EntityManager em = getEntityManager();
       List<IUser> userList = em.createQuery("Select c from USERS c").getResultList();

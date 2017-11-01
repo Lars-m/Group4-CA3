@@ -16,7 +16,9 @@ import security.IUser;
 
 @Path("admin")
 @RolesAllowed("Admin")
-public class Admin {
+public class Admin
+{
+
   private UserFacade userFacade;
   
   public Admin()
@@ -30,14 +32,19 @@ public class Admin {
     String now = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(new Date());
     return "{\"message\" : \"Hello Admin from server (call accesible by only authenticated ADMINS)\",\n"+"\"serverTime\": \""+now +"\"}"; 
   }
- 
-  @GET
-  @Path("allUsers")
-  @Produces(MediaType.APPLICATION_JSON)
-  public String getAllUsers(){
-      Gson gson = new GsonBuilder().setPrettyPrinting().create();
-      List<IUser> listOfUsers = userFacade.getAllUsers();
-      
-      return gson.toJson(listOfUsers);
-  } 
+
+    /*
+      Gets all users (Admins Only)
+      @return: List of Users.
+     */
+    @GET
+    @Path("allUsers")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllUsers()
+    {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<IUser> listOfUsers = userFacade.getAllUsers();
+
+        return gson.toJson(listOfUsers);
+    }
 }

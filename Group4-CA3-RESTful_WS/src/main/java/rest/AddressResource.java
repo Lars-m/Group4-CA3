@@ -22,7 +22,7 @@ public class AddressResource
 {
     private AddressFacade facade;
      
-public AddressResource()
+    public AddressResource()
 {
     facade = FacadeFactory.createFacade(AddressFacade.class);
 }
@@ -32,11 +32,11 @@ public AddressResource()
     */
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public String getPlaces(){
+  public String getPlaces()
+  {
       Gson gson = new GsonBuilder().setPrettyPrinting().create();
-      
       List<Address> listOfAddresses = facade.getAllAddresses();
-      
+
       return gson.toJson(listOfAddresses);
   }
  

@@ -31,6 +31,7 @@ public class AddressFacade
   public List<Address> getAllAddresses() 
   {
     List<Address> addressList = em.createQuery("Select c from ADDRESS c").getResultList();
+
     return addressList;
   }
   
