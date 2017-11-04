@@ -8,7 +8,8 @@ import AdminPage from "./AdminPage";
 import TopMenu from "./TopMenu";
 import Register from "./Register";
 import Address from "./Address";
-
+import UserList from "./UserList";
+import EditUser from "./EditUser";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/admin" component={AdminPage} />
         <Route path="/register" component={Register} />
         <Route path="/address" component={Address} />
+        <Route path="/userlist" component={UserList} />
+        <Route path="/userlist/:username" component={EditUser}/>
       </Switch>
     </div>
   )

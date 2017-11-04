@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import userData from "../facades/userFacade";
 
-class UserPage extends Component {
+class EditUser extends Component {
 
     constructor(){
       super();
@@ -24,8 +24,8 @@ class UserPage extends Component {
       return (
         <div>
           <h2>Users</h2>
-          
-            {this.state.data}  
+          kaka
+             
        
             </div>
       )
@@ -33,4 +33,4 @@ class UserPage extends Component {
 
   }
 
-export default UserPage;
+export default EditUser;

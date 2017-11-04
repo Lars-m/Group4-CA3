@@ -13,7 +13,7 @@ class AdminStore {
     this._messageFromServer = "";
     let resFromFirstPromise=null;  //Pass on response the "second" promise so we can read errors from server
     const options = fetchHelper.makeOptions("GET", true);
-    fetch(URL + "api/demoadmin", options)
+    fetch(URL + "api/address", options)
       .then((res) => {
         resFromFirstPromise = res;
         return res.json();
@@ -21,6 +21,29 @@ class AdminStore {
         errorChecker(resFromFirstPromise,data);
         if (cb) {
           cb(null, data.message)
+        }
+      }).catch(err => {
+        if (cb) {
+          cb({ err: fetchHelper.addJustErrorMessage(err) })
+        }
+      })
+  }
+
+  
+  getUsers = (cb) => {
+    this._errorMessage = "";
+    this._messageFromServer = "";
+    let resFromFirstPromise=null;  //Pass on response the "second" promise so we can read errors from server
+    const options = fetchHelper.makeOptions("GET", false);
+    fetch(URL + "api/admin/users", options)
+      .then((res) => {
+        resFromFirstPromise = res;
+        return res.json();
+      }).then((data) => {
+        errorChecker(resFromFirstPromise,data);
+        if (cb) {
+          cb(null, data)
+          console.log(data);
         }
       }).catch(err => {
         if (cb) {
