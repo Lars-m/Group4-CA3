@@ -6,9 +6,11 @@
 package facades;
 
 import entity.User;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import security.IUser;
 import security.PasswordStorage;
 
 /**
@@ -23,7 +25,6 @@ public class Tester {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_development");
         EntityManager em = emf.createEntityManager();
         UserFacade facade = new UserFacade(emf);
-        User user = new User("Sean", "Blob");
-        facade.createUser(user);
+        System.out.println(facade.getAllUsers());
     }
 }

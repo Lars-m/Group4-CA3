@@ -33,13 +33,13 @@ public class Admin
     }
 
       /*
-          GET {baseUrl}/api/admin/allUsers
+          GET {baseUrl}/api/admin/users
 
           Gets all users.
           @returns: List of Users..
       */
       @GET
-      @Path("allUsers")
+      @Path("users")
       @Produces(MediaType.APPLICATION_JSON)
       public String getAllUsers()
       {
