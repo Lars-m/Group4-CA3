@@ -6,10 +6,13 @@ import com.google.gson.JsonParser;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.*;
+import entity.User;
+import facades.FacadeFactory;
 import facades.UserFacade;
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotAuthorizedException;
@@ -31,7 +34,7 @@ public class Login {
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public Response login(String jsonString) throws JOSEException {
+  public Response login(String jsonString) throws JOSEException, PasswordStorage.CannotPerformOperationException {
     try {
       JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
       String username = json.get("username").getAsString();
@@ -51,6 +54,7 @@ public class Login {
       }
     }
     throw new NotAuthorizedException("Invalid username or password! Please try again", Response.Status.UNAUTHORIZED);
+
   }
 
   private List<String> authenticate(String userName, String password) {

@@ -6,9 +6,14 @@
 package rest;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import entity.User;
 import facades.FacadeFactory;
 import facades.UserFacade;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -18,6 +23,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import security.PasswordStorage;
 
 /**
  * REST Web Service
@@ -27,23 +34,34 @@ import javax.ws.rs.core.MediaType;
 @Path("register")
 public class RegisterResource {
     private UserFacade facade;
-
+    private Gson gson;
     /**
      * Creates a new instance of RegisterResource
      */
     public RegisterResource() {
-        facade = FacadeFactory.createFacade(UserFacade.class);
+        EntityManagerFactory emf = FacadeFactory.emf;
+        UserFacade facade = new UserFacade(emf);
+        gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
+        @GET
+      @Produces(MediaType.APPLICATION_JSON)
+      public String gt() {
+        return "{\"REG\" : \"USEr\"}";
+      }
+  
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String addUser(String json)
+    public Response addUser(String jsonString) throws PasswordStorage.CannotPerformOperationException
     {
-        Gson gson = new Gson();
-        User user = gson.fromJson(json, User.class);
-        facade.createUser(user);
-
-        return gson.toJson(user);
+        JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
+        String username = json.get("username").getAsString();
+        String password = json.get("password").getAsString();
+        EntityManagerFactory emf = FacadeFactory.emf;
+        UserFacade facade = new UserFacade(emf);
+        facade.createUser(new User(username, password));
+        JsonObject responseJson = new JsonObject();
+        return Response.ok(new Gson().toJson(responseJson)).build();
     }
 }
