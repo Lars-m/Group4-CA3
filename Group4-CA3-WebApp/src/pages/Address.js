@@ -27,7 +27,7 @@ class Address extends Component {
     return (
       <div>
         <h2>Address</h2>
-        <p>This message is fetched from the server if you were properly logged in</p>
+        <p>List of addresses</p>
         <div>
        
             {listItems}
