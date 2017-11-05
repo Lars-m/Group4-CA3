@@ -12,7 +12,7 @@ class Register extends Component {
     event.preventDefault()
     const user = this.state.user.username;
     const pass = this.state.user.password;
-    auth.login(user, pass, (err, loggedIn) => {
+    auth.register(user, pass, (err, loggedIn) => {
       if (err) {
         return this.setState({ err: err.errorMessage });
       }

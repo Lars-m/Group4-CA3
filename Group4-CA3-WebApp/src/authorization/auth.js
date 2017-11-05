@@ -6,7 +6,7 @@ const URL = require("../../package.json").serverURL;
 class AuthenticationHandler {
 
   constructor() {
-    this._token = null;  //Keps users logged in, even after a refresh of the page
+    this._token = null;  //Keeps users logged in, even after a refresh of the page
     //this.failedLogin = false;
     this._userName = "";
     this._isAdmin = false;
@@ -108,6 +108,36 @@ class AuthenticationHandler {
         if (this._token != null) {
           this._userWasLoggenIn(cb);
         }
+      })
+      .catch(err => {
+        console.log(err);
+        if (cb) {
+          cb({ errorMessage: fetchHelper.addJustErrorMessage(err) });
+        }
+      })
+    return;
+  }
+
+  register = (username, password, cb) => {
+    this._errorMessage = "";
+    var user = { username, password };
+
+    var options = {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }
+    let resFromFirstPromise=null;  //Pass on response the "second" promise so we can read errors from server
+    fetch(URL + "api/register", options)
+      .then(res => {
+        resFromFirstPromise = res;
+        return res.json();
+      })
+      .then(data => {
+        errorChecker(resFromFirstPromise, data);
+        cb(null);
       })
       .catch(err => {
         console.log(err);

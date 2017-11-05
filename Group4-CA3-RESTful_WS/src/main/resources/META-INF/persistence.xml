@@ -4,7 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entity.Role</class>
     <class>entity.User</class>
-    <class>entity.Place</class>
+    <class>entity.Address</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pu_development?zeroDateTimeBehavior=convertToNull"/>

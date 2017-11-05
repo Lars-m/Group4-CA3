@@ -6,19 +6,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * Facade Factory.
+ *
+ * @author lukasjurgelionis
  */
 public class FacadeFactory 
 {
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_development");
+    
+    public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_development");
     private static EntityManager em = emf.createEntityManager();
 
-    /**
-     * Creates new facade instance.
-     * @param facadeClass Facade class.
-     * @param <T> Type.
-     * @return Facade instance.
-     */
     public static <T> T createFacade(Class<T> facadeClass)
     {
         T facade = null;
