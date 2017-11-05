@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import userData from "../facades/userFacade";
+import adminData from "../facades/adminFacade";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
@@ -7,6 +7,7 @@ class EditUser extends Component {
     constructor(){
       super();
       this.state = {data: "", err:""}
+      
     }
 
     redirect = () => {
@@ -19,16 +20,21 @@ class EditUser extends Component {
     }
 
     handleDelete = (event) => {
-
+      event.preventDefault();
       confirmAlert({
         title: 'Confirm to submit',                        
         message: 'Are you sure you wish to delete this user',               
         childrenElement: () => <div>Custom UI</div>,       
         confirmLabel: 'Delete',                           
         cancelLabel: 'Cancel',                             
-        onConfirm: () => alert('Action after Confirm'),    
-        onCancel: () => alert('Action after Cancel'),      
+        onConfirm: () => this.deleteUser(),    
+        onCancel: () => this.render(),      
       })
+    }
+
+    deleteUser = () => {
+
+      this.redirect();
     }
 
     componentWillMount() {
@@ -42,7 +48,7 @@ class EditUser extends Component {
     render() {
       return (
         <div>
-          <h2>Users</h2>
+          <h2>User : </h2>
           kaka
           <button className="btn btn-lg btn-primary btn-block" onClick={this.handleDelete}>Delete User</button>
           <button className="btn btn-lg btn-primary btn-block" onClick={this.handleSave}>Save</button>

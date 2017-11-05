@@ -7,6 +7,7 @@ package facades;
 
 import entity.User;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -25,7 +26,7 @@ public class Tester {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_development");
         EntityManager em = emf.createEntityManager();
         UserFacade facade = new UserFacade(emf);
-        User user = facade.getUser("1");
-        System.out.println(user.getUserName());
+        List<IUser> users = facade.getAllUsers();
+        System.out.println(users);
     }
 }

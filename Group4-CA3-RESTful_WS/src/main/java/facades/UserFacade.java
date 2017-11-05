@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Query;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.core.Response;
 import security.IUser;
@@ -48,7 +49,10 @@ public class UserFacade implements IUserFacade
   public User getUser(String username)
   {
     EntityManager em = getEntityManager();
-    return em.find(User.class, 1);
+    Query sqlQuery = em.createQuery("SELECT c FROM SEED_USER c WHERE c.userName = :username", User.class)
+                .setParameter("username", username);
+
+        return (User) sqlQuery.getSingleResult();
   }
 
   /*

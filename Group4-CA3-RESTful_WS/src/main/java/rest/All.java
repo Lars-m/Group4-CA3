@@ -6,9 +6,11 @@
 package rest;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import entity.User;
 import facades.FacadeFactory;
 import facades.UserFacade;
+import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -22,6 +24,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import security.IUser;
 
 /**
  * REST Web Service
@@ -59,7 +62,7 @@ public class All {
     {
         UserFacade facade = FacadeFactory.createFacade(UserFacade.class);
         Gson gson = new Gson();
-        User user = (User) facade.getUserByUserId(name);
+        User user = (User) facade.getUser(name);
         if(user == null){
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
@@ -97,4 +100,16 @@ public class All {
         }
         return Response.status(200).build();
     }
+    
+    @GET
+    @Path("users")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllUsers()
+    {
+        UserFacade facade = FacadeFactory.createFacade(UserFacade.class);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<IUser> listOfUsers = facade.getAllUsers();
+
+        return gson.toJson(listOfUsers);
+      }
 }
