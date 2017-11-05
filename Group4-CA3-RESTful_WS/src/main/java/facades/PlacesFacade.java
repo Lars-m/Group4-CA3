@@ -3,9 +3,10 @@ package facades;
 import entity.Place;
 import java.util.List;
 import javax.persistence.EntityManager;
-/*
-    Place Facade to get and set Place entity.
-*/
+
+/**
+ *
+ */
 public class PlacesFacade 
 {
     private EntityManager em;
@@ -15,7 +16,7 @@ public class PlacesFacade
     this.em = em; 
   }
 
-  /*
+  /**
     Gets all Places.
   */
   public List<Place> getAllPlaces() 
@@ -25,7 +26,7 @@ public class PlacesFacade
     return placeList;
   }
   
-  /*
+  /**
     Adds new place entry.
   */
   public Place addPlace(Place place)

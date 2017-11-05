@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * User Endpoint.
+ */
 @Path("user")
 @RolesAllowed("User")
 public class UserResource
@@ -24,10 +27,10 @@ public class UserResource
         facade = FacadeFactory.createFacade(UserFacade.class);
     }
 
-    /*
-        POST {baseUrl}/api/user
-        Adds new user entry.
-        @returns: User entity.
+    /**
+     * POST {baseUrl}/user
+     * @param json JSON POST Body
+     * @return Created User JSON body.
      */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,11 +44,10 @@ public class UserResource
         return gson.toJson(user);
     }
 
-    /*
-        POST {baseUrl}/api/user/auth
-
-        Authenticates user.
-        @returns: User entity.
+    /**
+     * POST {baseUrl}/user/auth
+     * @param json JSON POST Body
+     * @return Authenticated User JSON body.
      */
     @POST
     @Path("auth")

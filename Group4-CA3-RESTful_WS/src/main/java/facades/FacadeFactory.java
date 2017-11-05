@@ -6,9 +6,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- *
- * @author lukasjurgelionis
- */
+   Facade Factory class.
+ **/
 public class FacadeFactory 
 {
     

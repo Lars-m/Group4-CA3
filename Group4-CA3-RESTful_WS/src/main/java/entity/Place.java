@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ *  Place Entity.
+ */
 @Entity(name = "PLACE")
 public class Place implements Serializable {
 

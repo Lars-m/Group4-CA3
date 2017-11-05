@@ -12,72 +12,80 @@ import javax.ws.rs.core.Response;
 import security.IUser;
 import security.PasswordStorage;
 
-/*
-    User Facade to get all User types.
+/**
+ * User Facade class.
  */
 public class UserFacade implements IUserFacade
 {
 
-  EntityManagerFactory emf;
+    EntityManagerFactory emf;
 
-  public UserFacade(EntityManagerFactory emf) {
-    this.emf = emf;   
-  }
+    public UserFacade(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
 
-  private EntityManager getEntityManager() {
-    return emf.createEntityManager();
-  }
+    private EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
 
-  @Override
-  public IUser getUserByUserId(String id)
-  {
-    EntityManager em = getEntityManager();
-
-    try
+    /**
+     * Gets User by ID.
+     * @param id User Id.
+     * @return User Entity.
+     */
+    @Override
+    public IUser getUserByUserId(String id)
     {
-      return em.find(User.class, id);
-    }
-    finally
-    {
-      em.close();
-    }
-  }
+        EntityManager em = getEntityManager();
 
-  /*
-  Return the Roles if users could be authenticated, otherwise null
-   */
-  @Override
-  public List<String> authenticateUser(String userName, String password) {
-    try {
-      System.out.println("User Before:" + userName+", "+password);
-      IUser user = getUserByUserId(userName);  
-      System.out.println("User After:" + user.getUserName()+", "+user.getPasswordHash());
-      return user != null && PasswordStorage.verifyPassword(password, user.getPasswordHash()) ? user.getRolesAsStrings() : null;
-    } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
-      throw new NotAuthorizedException("Invalid username or password", Response.Status.FORBIDDEN);
+        try
+        {
+            return em.find(User.class, id);
+        }
+        finally
+        {
+            em.close();
+        }
     }
-  }
 
-  /*
-    Creates new User entry.
-    @params: User entity.
-    @returns: User.
-   */
-  public IUser createUser(User user){
-      EntityManager em = getEntityManager();
-       em.getTransaction().begin();
-       em.persist(user);
-       em.getTransaction().commit();
-       return user;
-  }
+    /**
+     * Authenticate User.
+     * @param userName Username
+     * @param password Password
+     * @return User Auth status.
+     */
+    @Override
+    public List<String> authenticateUser(String userName, String password) {
+        try {
+            System.out.println("User Before:" + userName+", "+password);
+            IUser user = getUserByUserId(userName);
+            System.out.println("User After:" + user.getUserName()+", "+user.getPasswordHash());
+            return user != null && PasswordStorage.verifyPassword(password, user.getPasswordHash()) ? user.getRolesAsStrings() : null;
+        } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
+            throw new NotAuthorizedException("Invalid username or password", Response.Status.FORBIDDEN);
+        }
+    }
 
-  /*
-    Gets all Users.
-    @returns: List of Users.
-   */
-  public List<IUser> getAllUsers(){
-      EntityManager em = getEntityManager();
-      List<IUser> userList = em.createQuery("Select c from USERS c").getResultList();
-      return userList;
-  }
+    /**
+     * 
+     * @param user
+     * @return
+     */
+    public IUser createUser(User user){
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        em.persist(user);
+        em.getTransaction().commit();
+        return user;
+    }
+
+    /*
+      Gets all Users.
+      @returns: List of Users.
+     */
+    public List<IUser> getAllUsers(){
+        EntityManager em = getEntityManager();
+        List<IUser> userList = em.createQuery("Select c from USERS c").getResultList();
+        return userList;
+    }
 }

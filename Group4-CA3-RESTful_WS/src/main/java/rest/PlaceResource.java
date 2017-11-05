@@ -12,6 +12,9 @@ import facades.PlacesFacade;
 import facades.FacadeFactory;
 import java.util.List;
 
+/**
+    REST endpoint for Places.
+*/
 @Path("place")
 public class PlaceResource 
 {
@@ -22,12 +25,10 @@ public class PlaceResource
     facade = FacadeFactory.createFacade(PlacesFacade.class);
 }
 
-      /*
-         GET {baseUrl}/api/place
-
-         Gets all places.
-         @returns: List of places.
-      */
+    /**
+     * GET: {baseUrl}/api/place
+     * @return List of Places.
+     */
       @GET
       @Produces(MediaType.APPLICATION_JSON)
       public String getPlaces()
