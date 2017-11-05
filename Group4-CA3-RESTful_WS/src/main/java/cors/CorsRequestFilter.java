@@ -23,4 +23,4 @@ public class CorsRequestFilter implements ContainerRequestFilter {
       requestCtx.abortWith(Response.status(Response.Status.OK).build());
     }
   }
-} 
+}

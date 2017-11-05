@@ -1,14 +1,23 @@
 {
   "name": "seedclient",
+<<<<<<< HEAD
   "serverURL": "http://localhost:8084/seedMaven/",
+=======
+  "serverURL": "http://localhost:8080/",
+>>>>>>> fb41157b655acc29e631d9b1e99d68fe64e5d031
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-draw": "^1.0.3",
     "jwt-decode": "^2.2.0",
+    "mapbox-gl": "^0.41.0",
     "react": "^16.0.0",
     "react-bootstrap-table": "^4.1.1",
     "react-confirm-alert": "^1.0.8",
     "react-dom": "^16.0.0",
+    "react-geolocated": "^2.2.1",
+    "react-mapbox-gl": "^2.7.0",
+    "react-mapbox-gl-draw": "^1.0.3",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14"
   },
