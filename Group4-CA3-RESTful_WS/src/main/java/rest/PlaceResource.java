@@ -1,15 +1,16 @@
 package rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entity.Place;
 import facades.PlacesFacade;
 import facades.FacadeFactory;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import java.io.*;
 import java.util.List;
@@ -43,6 +44,30 @@ public class PlaceResource
           return gson.toJson(listOfPlaces);
       }
 
+    /**
+     * POST: {baseUrl}/api/place
+     * @param city City
+     * @param street Street
+     * @param zip Zip Code
+     * @param description Description
+     * @param file File
+     * @param fileDisposition File Details
+     * @return New Place entity.
+     * @throws IOException
+     */
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String uploadFile(@FormDataParam("city") String city, @FormDataParam("street") String street, @FormDataParam("zip") int zip, @FormDataParam("description") String description, @FormDataParam("file") InputStream file, @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException
+    {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String fileName = fileDisposition.getFileName();
+        saveFile(file, fileName);
+
+        Place place = facade.addPlace(city, street, zip, description, fileName);
+        return gson.toJson(place);
+    }
 
     /**
      * Save File to the file system.

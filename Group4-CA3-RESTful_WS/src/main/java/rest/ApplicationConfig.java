@@ -27,7 +27,6 @@ public class ApplicationConfig extends Application {
     resources.add(httpErrors.NotFoundExceptionMapper.class);
     resources.add(rest.Admin.class);
     resources.add(rest.All.class);
-    resources.add(rest.FileUploadResource.class);
     resources.add(rest.PlaceResource.class);
     resources.add(rest.UserResource.class);
     resources.add(security.JWTAuthenticationFilter.class);
