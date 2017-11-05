@@ -51,7 +51,6 @@ public class PlacesFacade
 
     em.persist(_place);
     em.getTransaction().commit();
-    em.close();
 
     return _place;
   }
