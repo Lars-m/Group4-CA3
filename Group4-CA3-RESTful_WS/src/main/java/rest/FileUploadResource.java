@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.io.*;
 
 /**
- REST {baseUrl}/api/place
+ REST {baseUrl}/api/file
  */
 public class FileUploadResource
 {
@@ -29,11 +29,8 @@ public class FileUploadResource
     @Path("/file")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response uploadFile(@DefaultValue("") @FormDataParam("user") String user,
-                               @FormDataParam("file") InputStream file,
-                               @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException
+    public Response uploadFile(@DefaultValue("") @FormDataParam("user") String user, @FormDataParam("file") InputStream file, @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException
     {
-
         System.out.println("Just to show how to send additonal data: " + user);
         String fileName = fileDisposition.getFileName();
         saveFile(file, fileName);

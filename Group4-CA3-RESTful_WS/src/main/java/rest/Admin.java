@@ -14,6 +14,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import security.IUser;
 
+/**
+ REST {baseUrl}/api/admin
+ */
 @Path("admin")
 @RolesAllowed("Admin")
 public class Admin
@@ -32,12 +35,10 @@ public class Admin
       return "{\"message\" : \"Hello Admin from server (call accesible by only authenticated ADMINS)\",\n"+"\"serverTime\": \""+now +"\"}";
     }
 
-      /*
-          GET {baseUrl}/api/admin/allUsers
-
-          Gets all users.
-          @returns: List of Users.
-      */
+    /**
+     * Gets all users.
+     * @return List of Users.
+     */
       @GET
       @Path("allUsers")
       @Produces(MediaType.APPLICATION_JSON)

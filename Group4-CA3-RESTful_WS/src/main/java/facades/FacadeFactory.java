@@ -10,7 +10,6 @@ import javax.persistence.Persistence;
  */
 public class FacadeFactory 
 {
-    
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_development");
     private static EntityManager em = emf.createEntityManager();
 

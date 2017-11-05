@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * User Endpoint.
+ * REST Endpoint for Users.
  */
 @Path("user")
 @RolesAllowed("User")

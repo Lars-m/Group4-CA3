@@ -13,8 +13,8 @@ import facades.FacadeFactory;
 import java.util.List;
 
 /**
-    REST endpoint for Places.
-*/
+ REST {baseUrl}/api/place
+ */
 @Path("place")
 public class PlaceResource 
 {

@@ -12,8 +12,6 @@ import security.PasswordStorage;
 
 @Entity(name = "SEED_USER")
 public class User implements IUser, Serializable{
- 
-  //You will need to change this to save a Hashed/salted password 
   @Column(length = 255, name = "PASSWORD_HASH",nullable = false)
   private String passwordHash; 
   
