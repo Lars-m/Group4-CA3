@@ -16,7 +16,7 @@ import java.io.*;
  */
 public class FileUploadResource
 {
-    private static final String FILE_LOCATION = "";
+    private static final String FILE_LOCATION = "/tmp/";
 
     /**
      * POST: {baseUrl}/api/file
