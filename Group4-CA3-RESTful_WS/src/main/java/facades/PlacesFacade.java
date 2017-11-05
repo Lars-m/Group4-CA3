@@ -22,22 +22,36 @@ public class PlacesFacade
    */
   public List<Place> getAllPlaces()
   {
-    List<Place> placeList = em.createQuery("Select c from PLACE c").getResultList();
+    List<Place> _placeList = em.createQuery("Select c from PLACE c").getResultList();
 
-    return placeList;
+    return _placeList;
   }
 
   /**
-   * Adds new place.
-   * @param place Place entity.
-   * @return Place entity.
+   * Creates a new place entity.
+   * @param city City
+   * @param street Street
+   * @param zip Zip Code.
+   * @param imageUrl Image Url.
+   * @param description Place Description
+   * @return Place Entity.
    */
-  public Place addPlace(Place place)
+  public Place addPlace(String city, String street, int zip, String imageUrl, String description)
   {
     em.getTransaction().begin();
-    em.persist(place);
-    em.getTransaction().commit();
 
-    return place;
+    Place _place = new Place();
+
+    _place.setCity(city);
+    _place.setStreet(street);
+    _place.setZip(zip);
+    _place.setImageUrl(imageUrl);
+    _place.setDescription(description);
+
+    em.persist(_place);
+    em.getTransaction().commit();
+    em.close();
+
+    return _place;
   }
 }
