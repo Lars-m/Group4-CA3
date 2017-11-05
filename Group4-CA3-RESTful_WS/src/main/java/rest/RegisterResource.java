@@ -32,37 +32,54 @@ import security.PasswordStorage;
  * @author Sean
  */
 @Path("register")
-public class RegisterResource {
+public class RegisterResource
+{
     private UserFacade facade;
     private Gson gson;
+
     /**
      * Creates a new instance of RegisterResource
      */
-    public RegisterResource() {
+    public RegisterResource()
+    {
         EntityManagerFactory emf = FacadeFactory.emf;
         UserFacade facade = new UserFacade(emf);
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
+    /**
+     * GET {baseUrl}/api/register
+     * @return response.
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String gt() 
+    public String gt()
     {
         return "{\"REG\" : \"USEr\"}";
     }
-  
+
+    /**
+     * POST {baseUrl}/api/register
+     * @param jsonString JSON Body.
+     * @return HttpStatusCode.
+     * @throws PasswordStorage.CannotPerformOperationException
+     */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUser(String jsonString) throws PasswordStorage.CannotPerformOperationException
     {
         JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
+
         String username = json.get("username").getAsString();
         String password = json.get("password").getAsString();
+
         EntityManagerFactory emf = FacadeFactory.emf;
+
         UserFacade facade = new UserFacade(emf);
         facade.createUser(new User(username, password));
         JsonObject responseJson = new JsonObject();
+
         return Response.ok(new Gson().toJson(responseJson)).build();
     }
 }

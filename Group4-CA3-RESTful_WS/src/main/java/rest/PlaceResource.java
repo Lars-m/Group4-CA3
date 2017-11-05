@@ -19,30 +19,31 @@ import java.util.List;
  REST {baseUrl}/api/place
  */
 @Path("place")
-public class PlaceResource 
+public class PlaceResource
 {
     private PlacesFacade facade;
 
     //TODO: Change file location.
     private String FILE_LOCATION = "/Users/lukasjurgelionis/Documents/Development/Group4-CA3/Group4-CA3-WebApp/public/";
+
     public PlaceResource()
-{
-    facade = FacadeFactory.createFacade(PlacesFacade.class);
-}
+    {
+        facade = FacadeFactory.createFacade(PlacesFacade.class);
+    }
 
     /**
      * GET: {baseUrl}/api/place
      * @return List of Places.
      */
-      @GET
-      @Produces(MediaType.APPLICATION_JSON)
-      public String getPlaces()
-      {
-          Gson gson = new GsonBuilder().setPrettyPrinting().create();
-          List<Place> listOfPlaces = facade.getAllPlaces();
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getPlaces()
+    {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<Place> listOfPlaces = facade.getAllPlaces();
 
-          return gson.toJson(listOfPlaces);
-      }
+        return gson.toJson(listOfPlaces);
+    }
 
     /**
      * POST: {baseUrl}/api/place
@@ -57,6 +58,7 @@ public class PlaceResource
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         Place place = facade.addPlace(gson.fromJson(jsonContent, entity.Place.class));
+
         return gson.toJson(place);
     }
 }

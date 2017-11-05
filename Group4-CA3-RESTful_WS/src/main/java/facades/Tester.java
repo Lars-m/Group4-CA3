@@ -19,7 +19,6 @@ import security.PasswordStorage;
  * @author Sean
  */
 public class Tester {
-    
 
     public static void main (String[] args) throws PasswordStorage.CannotPerformOperationException
     {

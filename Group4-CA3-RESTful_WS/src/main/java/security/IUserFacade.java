@@ -6,7 +6,8 @@ import java.util.List;
  *
  * @author lam
  */
-public interface IUserFacade {
+public interface IUserFacade
+{
 
     /*
     Return the Roles if users could be authenticated, otherwise null

@@ -27,10 +27,10 @@ public class UserResource
         facade = FacadeFactory.createFacade(UserFacade.class);
     }
 
-    /*
-        POST {baseUrl}/api/user
-        Adds new user entry.
-        @returns: User entity.
+    /**
+     * POST {baseUrl}/api/user
+     * @param json JSON Body.
+     * @return JSON User Response.
      */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -44,11 +44,10 @@ public class UserResource
         return gson.toJson(user);
     }
 
-    /*
-        POST {baseUrl}/api/user/auth
-
-        Authenticates user.
-        @returns: User entity.
+    /**
+     * POST {baseUrl}/api/auth
+     * @param json JSON Body.
+     * @return JSON User REsponse
      */
     @POST
     @Path("auth")

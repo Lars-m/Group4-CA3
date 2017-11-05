@@ -12,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *  Place Entity.
+ *  Place Entity class.
  */
 @Entity(name = "PLACE")
 public class Place implements Serializable {
@@ -23,14 +23,6 @@ public class Place implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     private String zip;
 
     private String city;
@@ -39,49 +31,37 @@ public class Place implements Serializable {
 
     private String description;
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
     private String imageUrl;
+
+    private String rating;
 
     public String getImageUrl() { return imageUrl; }
 
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
-    private String rating;
-
     public String getPlaceRating() { return rating; }
 
     public void setPlaceRating(String rating) { this.rating = rating; }
+
+    public String getDescription() { return description; }
+
+    public void setDescription(String description) { this.description = description; }
+
+    public String getCity() { return city; }
+
+    public void setCity (String city) { this.city = city; }
+
+    public String getStreet() { return street; }
+
+    public void setStreet(String street) { this.street = street; }
+
+    public String getZip() { return zip; }
+
+    public void setZip(String zip) { this.zip = zip; }
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
 
     @Override
     public int hashCode()
@@ -94,7 +74,6 @@ public class Place implements Serializable {
     @Override
     public boolean equals(Object object)
     {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Place))
         {
             return false;

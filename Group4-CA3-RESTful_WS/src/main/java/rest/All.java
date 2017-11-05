@@ -27,38 +27,38 @@ import javax.ws.rs.core.Response;
 import security.IUser;
 
 /**
- * REST Web Service
+ * DEMO REST Web Service
  *
  * @author plaul1
  */
 @Path("demoall")
 public class All {
 
-  @Context
-  private UriInfo context;
+    @Context
+    private UriInfo context;
 
-  /**
-   * Creates a new instance of A
-   */
-  public All() {
-  }
+    /**
+     * Creates a new instance of A
+     */
+    public All() {
+    }
 
-  /**
-   * Retrieves representation of an instance of rest.All
-   * @return an instance of java.lang.String
-   */
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public String getText() {
-    return " {\"message\" : \"result for all\"}";
-  }
-  
-  
-  //TEST ENDPOINTS, DELETE WHEN DONE
+    /**
+     * Retrieves representation of an instance of rest.All
+     * @return an instance of java.lang.String
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getText() {
+        return " {\"message\" : \"result for all\"}";
+    }
+
+
+
     @GET
     @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getUser(@PathParam("name") String name) 
+    public String getUser(@PathParam("name") String name)
     {
         UserFacade facade = FacadeFactory.createFacade(UserFacade.class);
         Gson gson = new Gson();
@@ -68,7 +68,7 @@ public class All {
         }
         return gson.toJson(user);
     }
-    
+
     //TEST ENDPOINTS, DELETE WHEN DONE
     @DELETE
     @Path("delete/{id}")
@@ -81,7 +81,7 @@ public class All {
         }
         return Response.status(200).build();
     }
-    
+
     //TEST ENDPOINTS, DELETE WHEN DONE
     @PUT
     @Path("edit/{id}")
@@ -100,7 +100,7 @@ public class All {
         }
         return Response.status(200).build();
     }
-    
+
     @GET
     @Path("users")
     @Produces(MediaType.APPLICATION_JSON)
@@ -111,5 +111,5 @@ public class All {
         List<IUser> listOfUsers = facade.getAllUsers();
 
         return gson.toJson(listOfUsers);
-      }
+    }
 }

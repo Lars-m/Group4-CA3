@@ -15,21 +15,30 @@ import javax.ws.rs.ext.Provider;
  * Not Found Exception
  */
 @Provider
-public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundException> {
+public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundException>
+{
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Context
     ServletContext context;
 
+    /**
+     * Print exception in the response.
+     * @param ex Exception
+     * @return Response.
+     */
     @Override
-    public Response toResponse(NotFoundException ex) {
+    public Response toResponse(NotFoundException ex)
+    {
         JsonObject error = new JsonObject();
         JsonObject errorDetail = new JsonObject();
+
         int statusCode = ex.getResponse().getStatus();
         errorDetail.addProperty("code", statusCode);
         errorDetail.addProperty("message", "The requested resource was not found on our server");
         error.add("error", errorDetail);
+
         return Response.status(statusCode).entity(gson.toJson(error)).type(MediaType.APPLICATION_JSON).build();
     }
 }
