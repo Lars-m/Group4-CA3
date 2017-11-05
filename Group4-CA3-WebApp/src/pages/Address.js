@@ -22,17 +22,13 @@ class Address extends Component {
 
 
   render() {
-    const listItems = this.state.data.map((d) => <li key>  {d.city} {d.street} {d.zip} {d.description}</li>);
-
+    const listItems = this.state.data.map((d) => <li key>  {d.city} {d.street} {d.zip} {d.description} <img src = {d.imageUrl} alt = 'image'/></li>);
+    
     return (
       <div>
-        <h2>Address</h2>
-        <p>This message is fetched from the server if you were properly logged in</p>
+        <h2>Places</h2>
         <div>
-       
             {listItems}
-        
-          
         </div>
       </div>
     )
