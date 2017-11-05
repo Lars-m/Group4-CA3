@@ -36,7 +36,7 @@ public class PlacesFacade
    * @param description Place Description
    * @return Place Entity.
    */
-  public Place addPlace(String city, String street, int zip, String imageUrl, String description)
+  public Place addPlace(String city, String street, int zip, String imageUrl, String description, int rating)
   {
     em.getTransaction().begin();
 
@@ -47,6 +47,7 @@ public class PlacesFacade
     _place.setZip(zip);
     _place.setImageUrl(imageUrl);
     _place.setDescription(description);
+    _place.setPlaceRating(rating);
 
     em.persist(_place);
     em.getTransaction().commit();
