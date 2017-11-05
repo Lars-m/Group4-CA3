@@ -29,6 +29,22 @@ class AddressStore {
         }
       })
   }
+
+  addPlace(place) {
+    this._errorMessage = "";
+    this._messageFromServer = "";
+    let resFromFirstPromise = null;
+    const options = fetchHelper.makeOptions("POST", false, place);
+    fetch(URL + "api/place", options)
+      .then((res) => {
+        resFromFirstPromise = res;
+        return res.json();
+      }).then((data) => {
+        errorChecker(resFromFirstPromise, data);
+      }).catch(err => {
+        console.log(JSON.stringify(err))
+      })
+  } 
 }
 
 let addressStore = new AddressStore();

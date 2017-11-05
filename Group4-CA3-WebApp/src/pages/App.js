@@ -9,6 +9,7 @@ import TopMenu from "./TopMenu";
 import Register from "./Register";
 import Places from "./Places";
 import Geolocation from "./Geolocation";
+import AddPlace from "./AddPlace";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/admin" component={AdminPage} />
         <Route path="/register" component={Register} />
         <Route path="/places" component={Places} />
+        <Route path="/addplace" component={AddPlace} />
       </Switch>
     </div>
   )

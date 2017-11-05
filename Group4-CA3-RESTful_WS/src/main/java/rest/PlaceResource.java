@@ -58,14 +58,14 @@ public class PlaceResource
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String uploadFile(@FormDataParam("city") String city, @FormDataParam("street") String street, @FormDataParam("zip") int zip, @FormDataParam("description") String description, @FormDataParam("rating") int rating, @FormDataParam("file") InputStream file, @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException
+    public String addPlace(@FormDataParam("city") String city, @FormDataParam("street") String street, @FormDataParam("zip") int zip, @FormDataParam("description") String description, @FormDataParam("rating") int rating, @FormDataParam("file") InputStream file, @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException
     {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         String fileName = fileDisposition.getFileName();
         saveFile(file, fileName);
 
-        Place place = facade.addPlace(city, street, zip, description, fileName, rating);
+        Place place = facade.addPlace(city, street, zip, fileName, description, rating);
         return gson.toJson(place);
     }
 

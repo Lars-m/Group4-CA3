@@ -18,6 +18,7 @@ export default {
     }
     if (data !== undefined) {
       options.body = JSON.stringify(data);
+      console.log(options.body);
     }
     return options;
   },

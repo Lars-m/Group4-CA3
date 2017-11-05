@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 import adressData from "../facades/addressFacade";
 
 class Places extends Component {
@@ -26,7 +27,12 @@ class Places extends Component {
 
     return (
       <div className="container">
+
+      <Link to="/addplace">
+      <span className="glyphicon glyphicon-plus"></span> Add new place!</Link>
+
         <h2>Places</h2>
+
         <div className="row">
           {
             places.map((place) => {
