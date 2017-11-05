@@ -4,10 +4,7 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.omg.CORBA.portable.InputStream;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.File;
@@ -16,8 +13,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * {baseUrl}/image
+ * {baseUrl}/api/image
  */
+@Path("image")
 public class ImageResource
 {
     //TODO: Change before deploying.
@@ -30,9 +28,9 @@ public class ImageResource
      * @return Response.
      * @throws IOException
      */
-    @Path("file")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response uploadFile(@FormDataParam("file") InputStream file, @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException
     {
         String fileName = fileDisposition.getFileName();
@@ -50,7 +48,6 @@ public class ImageResource
     private void saveFile(InputStream is, String fileLocation) throws IOException
     {
         String location = FILE_LOCATION + fileLocation;
-
         try (OutputStream os = new FileOutputStream(new File(location)))
         {
             byte[] buffer = new byte[256];

@@ -21,24 +21,23 @@ export default class AddPlace extends Component
     _submitHandler = e => {
         e.preventDefault();
         var input = document.querySelector('input[type="file"]');
-        var data = new FormData();
+        var image = new FormData();
         const splitPath = input.value.split("\\")
         const imageName = splitPath[splitPath.length - 1]
-        data.append('file', input.files[0]);        
-        data.append("fileName", imageName)
+        image.append('file', input.files[0]);        
+        image.append("fileName", imageName)
 
         const place = {
-            place: {
-                city: this.state.city,
-                zip: this.state.zip,
-                street: this.state.street,
-                location: this.state.location,
-                description: this.state.description,
-                image: imageName
-            }
+                city: this.state.place.city,
+                zip: this.state.place.zip,
+                street: this.state.place.street,
+                location: this.state.place.location,
+                description: this.state.place.description,
+                rating: this.state.place.rating,
+                file: imageName
         }    
 
-        placesFacade.addPlace(place);
+        placesFacade.addPlace(place, image);
         console.log("reached.");
     }
 x

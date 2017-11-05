@@ -30,40 +30,33 @@ class AddressStore {
       })
   }
 
-  addPlace(place, data) 
+  addPlace(place, file) 
   {
     this._errorMessage = "";
     this._messageFromServer = "";
-    let resFromFirstPromise = null;
     const options = fetchHelper.makeOptions("POST", false, place);
 
     fetch(URL + "api/place", options)
       .then((res) => 
       {
-        resFromFirstPromise = res;
         return res.json()
         .then((place) =>
         {
-          this.uploadImage(data)
+          this.uploadImage(file)
         })
-      }).then((input) => 
-      {
-        errorChecker(resFromFirstPromise, input);
-      }).catch(err => 
-        {
-        console.log(JSON.stringify(err))
       })
   } 
 
 
-uploadImage = (data) => 
+uploadImage = (file) => 
 {
   const options = fetchHelper.makeOptions("POST");
   fetch(URL + 'api/image', {
       method: 'POST',
-      body: data
+      body: file
   })
-}
+  console.log(file);
+  }
 }
 
 let addressStore = new AddressStore();

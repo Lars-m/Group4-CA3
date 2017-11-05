@@ -23,6 +23,8 @@ public class PlaceResource
 {
     private PlacesFacade facade;
 
+    //TODO: Change file location.
+    private String FILE_LOCATION = "/Users/lukasjurgelionis/Documents/Development/Group4-CA3/Group4-CA3-WebApp/public/";
     public PlaceResource()
 {
     facade = FacadeFactory.createFacade(PlacesFacade.class);
@@ -44,22 +46,17 @@ public class PlaceResource
 
     /**
      * POST: {baseUrl}/api/place
-     * @param city City
-     * @param street Street
-     * @param zip Zip Code
-     * @param description Description
-     * @param fileName Filename
      * @return New Place entity.
      * @throws IOException
      */
     @POST
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String addPlace(@FormDataParam("city") String city, @FormDataParam("street") String street, @FormDataParam("zip") int zip, @FormDataParam("description") String description, @FormDataParam("rating") int rating, @FormDataParam("file") String fileName) throws IOException
+    public String addPlace(String jsonContent) throws IOException
     {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        Place place = facade.addPlace(city, street, zip, fileName, description, rating);
+        Place place = facade.addPlace(gson.fromJson(jsonContent, entity.Place.class));
         return gson.toJson(place);
     }
 }

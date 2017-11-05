@@ -31,7 +31,7 @@ public class Place implements Serializable {
         this.id = id;
     }
 
-    private int zip;
+    private String zip;
 
     private String city;
 
@@ -63,11 +63,11 @@ public class Place implements Serializable {
         this.street = street;
     }
 
-    public int getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 
@@ -77,11 +77,11 @@ public class Place implements Serializable {
 
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
-    private int rating;
+    private String rating;
 
-    public int getPlaceRating() { return rating; }
+    public String getPlaceRating() { return rating; }
 
-    public void setPlaceRating(int rating) { this.rating = rating; }
+    public void setPlaceRating(String rating) { this.rating = rating; }
 
     @Override
     public int hashCode()

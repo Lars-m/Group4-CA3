@@ -29,29 +29,14 @@ public class PlacesFacade
 
   /**
    * Creates a new place entity.
-   * @param city City
-   * @param street Street
-   * @param zip Zip Code.
-   * @param imageUrl Image Url.
-   * @param description Place Description
    * @return Place Entity.
    */
-  public Place addPlace(String city, String street, int zip, String imageUrl, String description, int rating)
+  public Place addPlace(Place place)
   {
-    em.getTransaction().begin();
+      em.getTransaction().begin();
+      em.persist(place);
+      em.getTransaction().commit();
 
-    Place _place = new Place();
-
-    _place.setCity(city);
-    _place.setStreet(street);
-    _place.setZip(zip);
-    _place.setImageUrl(imageUrl);
-    _place.setDescription(description);
-    _place.setPlaceRating(rating);
-
-    em.persist(_place);
-    em.getTransaction().commit();
-
-    return _place;
+      return place;
   }
 }
