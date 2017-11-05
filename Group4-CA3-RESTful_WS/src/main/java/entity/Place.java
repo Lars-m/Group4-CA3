@@ -77,13 +77,6 @@ public class Place implements Serializable {
 
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
-    private int rating;
-
-    public int getRating() { return rating; }
-
-    public void setRating(int rating) { this.rating = rating; }
-
-
     @Override
     public int hashCode()
     {
@@ -111,7 +104,13 @@ public class Place implements Serializable {
     @Override
     public String toString()
     {
-        return "Place{" + "id=" + id + ", zip=" + zip + ", city" + city + ", street" + street + ", description=" + description + '}';
+        return "Place{" + "id=" + id +
+                ", zip=" + zip +
+                ", city" + city +
+                ", street" + street +
+                ", description=" + description +
+                ", imageUrl=" + imageUrl +
+                '}';
     }
 
 }

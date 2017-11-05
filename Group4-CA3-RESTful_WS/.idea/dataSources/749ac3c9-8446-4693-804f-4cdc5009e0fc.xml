@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="pu_development@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="pu_development">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="olgaBot"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="phpmyadmin"/>
+    <schema id="8" parent="1" name="test"/>
+    <table id="9" parent="2" name="ADDRESS"/>
+    <table id="10" parent="2" name="PLACE"/>
+    <table id="11" parent="2" name="SEED_USER"/>
+    <table id="12" parent="2" name="SEED_USER_USER_ROLE"/>
+    <table id="13" parent="2" name="USER_ROLE"/>
+    <column id="14" parent="9" name="ID">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="15" parent="9" name="CITY">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="16" parent="9" name="DESCRIPTION">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="17" parent="9" name="STREET">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="18" parent="9" name="ZIP">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="19" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="20" parent="10" name="ID">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="10" name="CITY">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="22" parent="10" name="DESCRIPTION">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="23" parent="10" name="STREET">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="24" parent="10" name="ZIP">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="25" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="11" name="USER_NAME">
+      <Position>1</Position>
+      <DataType>varchar(35)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="11" name="PASSWORD_HASH">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="28" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USER_NAME</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="12" name="roles_ROLE_NAME">
+      <Position>1</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="12" name="users_USER_NAME">
+      <Position>2</Position>
+      <DataType>varchar(35)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="31" parent="12" name="FK_SEED_USER_USER_ROLE_users_USER_NAME">
+      <ColNames>users_USER_NAME</ColNames>
+    </index>
+    <key id="32" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>roles_ROLE_NAME
+users_USER_NAME</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="33" parent="12" name="FK_SEED_USER_USER_ROLE_roles_ROLE_NAME">
+      <ColNames>roles_ROLE_NAME</ColNames>
+      <RefSchemaName>pu_development</RefSchemaName>
+      <RefTableName>USER_ROLE</RefTableName>
+      <RefColNames>ROLE_NAME</RefColNames>
+    </foreign-key>
+    <foreign-key id="34" parent="12" name="FK_SEED_USER_USER_ROLE_users_USER_NAME">
+      <ColNames>users_USER_NAME</ColNames>
+      <RefSchemaName>pu_development</RefSchemaName>
+      <RefTableName>SEED_USER</RefTableName>
+      <RefColNames>USER_NAME</RefColNames>
+    </foreign-key>
+    <column id="35" parent="13" name="ROLE_NAME">
+      <Position>1</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="36" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ROLE_NAME</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
