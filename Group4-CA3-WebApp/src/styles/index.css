@@ -100,3 +100,16 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.box {
+  background-color: #EEEEEE;
+  margin: 3px 3px 3px 3px;
+  padding-top: 20px;
+  padding-left: 20px;
+  border-radius: 1%;
+  border-top-color:  #000000;
+}
+
+.locationText {
+  
+}
