@@ -44,6 +44,12 @@ public class UserFacade implements IUserFacade
       em.close();
     }
   }
+  
+  public User getUser(String username)
+  {
+    EntityManager em = getEntityManager();
+    return em.find(User.class, 1);
+  }
 
   /*
   Return the Roles if users could be authenticated, otherwise null
