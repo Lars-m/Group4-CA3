@@ -6,14 +6,13 @@
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "ADDRESS")
-public class Address implements Serializable {
+@Entity(name = "PLACE")
+public class Place implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,11 +81,11 @@ public class Address implements Serializable {
     public boolean equals(Object object)
     {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Address))
+        if (!(object instanceof Place))
         {
             return false;
         }
-        Address other = (Address) object;
+        Place other = (Place) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
         {
             return false;
@@ -97,7 +96,7 @@ public class Address implements Serializable {
     @Override
     public String toString()
     {
-        return "Address{" + "id=" + id + ", zip=" + zip + ", city" + city + ", street" + street + ", description=" + description + '}';
+        return "Place{" + "id=" + id + ", zip=" + zip + ", city" + city + ", street" + street + ", description=" + description + '}';
     }
 
 }
