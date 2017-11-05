@@ -12,7 +12,7 @@ const Geolocation = () => {
   return (
  
       <Map
-        style="mapbox://styles/mapbox/outdoors-v9" // eslint-disable-line
+        style="mapbox://styles/mapbox/outdoors-v9" 
         containerStyle={{ height: '800px', width: '50vw' }}
       >
         <DrawControl />
