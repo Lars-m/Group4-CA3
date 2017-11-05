@@ -1,5 +1,7 @@
 package rest;
 
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
+
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
@@ -22,6 +24,7 @@ public class ApplicationConfig extends Application {
    */
   private void addRestResourceClasses(Set<Class<?>> resources) {
     resources.add(cors.CorsRequestFilter.class);
+    resources.add(MultiPartFeature.class);
     resources.add(cors.CorsResponseFilter.class);
     resources.add(httpErrors.GenericExceptionMapper.class);
     resources.add(httpErrors.NotFoundExceptionMapper.class);

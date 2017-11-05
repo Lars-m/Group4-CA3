@@ -1,8 +1,8 @@
-INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION) VALUES ('0555', 'Scanning', 'lelStreet', 'Such a nice place', '');
-INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION) VALUES ('2809', 'meme', 'kek', 'PEPE');
-INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION) VALUES ('2869', 'bruv', 'fam', 'Roadman Shaq');
-INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION) VALUES ('666', 'Luci', 'fer', 'Underworld');
-INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION) VALUES ('69', 'Arek', 'mum', 'Very Warm, cosy place');
-INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION) VALUES ('2700', 'random', 'street', 'Great Place, great guys, trust me');
-INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION) VALUES ('15722', 'CarollTown', 'Elm-Street', 'Freddy recommends');
-INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION) VALUES ('7928', 'Home', 'GoHome', 'You know this place');
+INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION, IMAGEURL) VALUES ('0555', 'Scanning', 'lelStreet', 'Such a nice place', 'https://i.redditmedia.com/HAKNgcEpSjWtg416LwDPtVXtlaMJV0d--AV78IeZ1qc.jpg?w=505&s=491f34b644d195d808b80f8e65a23cdb');
+INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION, IMAGEURL) VALUES ('2809', 'meme', 'kek', 'PEPE', 'https://i.redditmedia.com/05EgoIaXyVAnIbkwXZhe4yyTnCwocMA_cKLy9W-lYyo.png?w=533&s=038cd7ba1289a329d4d267c464f379ad');
+INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION, IMAGEURL) VALUES ('2869', 'bruv', 'fam', 'Roadman Shaq', 'https://i.redditmedia.com/MX4DVk8xJwLGC6xloN09hV4BpKiuPh8GTWAA42Hpuug.jpg?w=640&s=56b61cb1525820ca88d1835f33dbd492');
+INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION, IMAGEURL) VALUES ('666', 'Luci', 'fer', 'Underworld', 'https://i.redditmedia.com/g0e2DGXn5n4nEpU7ex6D7K9PVt_UwK5wW2akGmCvzTY.jpg?w=452&s=251b174079f5933079bf14d1f1603a64');
+INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION, IMAGEURL) VALUES ('69', 'Arek', 'mum', 'Very Warm, cosy place', 'https://i.redditmedia.com/MUAV2lI7j0VRCRPufOwrujL29FKh-k02PRKPr5DiAVc.png?w=580&s=d29d140eb6d25c0db5a32a6a3a2d387f');
+INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION, IMAGEURL) VALUES ('2700', 'random', 'street', 'Great Place, great guys, trust me', 'https://i.redditmedia.com/Yt-ZyGmcsiAZOOamp-HXiUxoIDCmgv7viAG2Xu8ABdw.jpg?w=623&s=4fb20089a631811ea67a68d5c53ab2c4');
+INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION, IMAGEURL) VALUES ('15722', 'CarollTown', 'Elm-Street', 'Freddy recommends', 'https://i.redditmedia.com/DE7onqI16BQlcrmioSZR8Gz6n3KhuZJ18Iyi3zaIU4c.jpg?w=677&s=a821dda34abc3b86dd6bd459f74eff1a');
+INSERT INTO PLACE (ZIP, CITY, STREET, DESCRIPTION, IMAGEURL) VALUES ('7928', 'Home', 'GoHome', 'You know this place', 'https://i.redditmedia.com/oNh71A23zLGsQsYnjE54tlLHC00doFaDfGn-lWiZbYo.jpg?w=864&s=df104a480766fb873d0e3251763073d2');
