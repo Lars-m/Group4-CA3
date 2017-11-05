@@ -15,8 +15,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
+import static javax.ws.rs.Priorities.*;
+
 @Provider
-@Priority(Priorities.AUTHORIZATION)
+@Priority(AUTHORIZATION)
 public class RolesAllowedFilter implements ContainerRequestFilter {
 
   @Context

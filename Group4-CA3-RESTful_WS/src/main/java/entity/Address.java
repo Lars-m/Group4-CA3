@@ -12,10 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author AR
- */
 @Entity(name = "ADDRESS")
 public class Address implements Serializable {
 
@@ -32,15 +28,15 @@ public class Address implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     private int zip;
-    
+
     private String city;
-   
+
     private String street;
-   
+
     private String description;
-    
+
     public String getDescription() {
         return description;
     }
@@ -103,5 +99,5 @@ public class Address implements Serializable {
     {
         return "Address{" + "id=" + id + ", zip=" + zip + ", city" + city + ", street" + street + ", description=" + description + '}';
     }
-    
+
 }

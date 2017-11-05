@@ -36,7 +36,7 @@ public class Admin
           GET {baseUrl}/api/admin/allUsers
 
           Gets all users.
-          @returns: List of Users..
+          @returns: List of Users.
       */
       @GET
       @Path("allUsers")

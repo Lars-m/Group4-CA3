@@ -1,18 +1,21 @@
 package test;
 
-import org.junit.BeforeClass;
 import io.restassured.RestAssured;
-import static io.restassured.RestAssured.*;
 import io.restassured.parsing.Parser;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import javax.servlet.ServletException;
 import org.apache.catalina.LifecycleException;
-import static org.hamcrest.Matchers.*;
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import test.utils.EmbeddedTomcat;
+
+import javax.servlet.ServletException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.notNullValue;
 
 public class InitialSeedRestIntegrationTest {
 
@@ -43,7 +46,8 @@ public class InitialSeedRestIntegrationTest {
   }
 
   @BeforeClass
-  public static void setUpBeforeAll() throws ServletException, MalformedURLException, LifecycleException {
+  public static void setUpBeforeAll() throws ServletException, MalformedURLException, LifecycleException
+  {
     tomcat = new EmbeddedTomcat();
     tomcat.start(SERVER_PORT, APP_CONTEXT);
     RestAssured.baseURI = "http://localhost";
@@ -53,7 +57,8 @@ public class InitialSeedRestIntegrationTest {
   }
 
   @AfterClass
-  public static void after() throws ServletException, MalformedURLException, LifecycleException, IOException {
+  public static void after() throws ServletException, MalformedURLException, LifecycleException, IOException
+  {
     tomcat.stop();
   }
 
@@ -66,6 +71,11 @@ public class InitialSeedRestIntegrationTest {
             .get("/api/demoall").then()
             .statusCode(200)
             .body("message", equalTo("result for all"));
+  }
+
+  @Test
+  public void name() throws Exception
+  {
   }
 
   @Test
