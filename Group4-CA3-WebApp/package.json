@@ -1,10 +1,6 @@
 {
   "name": "seedclient",
-<<<<<<< HEAD
   "serverURL": "http://localhost:8084/seedMaven/",
-=======
-  "serverURL": "http://localhost:8080/",
->>>>>>> fb41157b655acc29e631d9b1e99d68fe64e5d031
   "version": "0.1.0",
   "private": true,
   "dependencies": {
