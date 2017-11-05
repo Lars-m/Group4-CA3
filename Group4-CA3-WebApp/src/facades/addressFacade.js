@@ -30,21 +30,40 @@ class AddressStore {
       })
   }
 
-  addPlace(place) {
+  addPlace(place, data) 
+  {
     this._errorMessage = "";
     this._messageFromServer = "";
     let resFromFirstPromise = null;
     const options = fetchHelper.makeOptions("POST", false, place);
+
     fetch(URL + "api/place", options)
-      .then((res) => {
+      .then((res) => 
+      {
         resFromFirstPromise = res;
-        return res.json();
-      }).then((data) => {
-        errorChecker(resFromFirstPromise, data);
-      }).catch(err => {
+        return res.json()
+        .then((place) =>
+        {
+          this.uploadImage(data)
+        })
+      }).then((input) => 
+      {
+        errorChecker(resFromFirstPromise, input);
+      }).catch(err => 
+        {
         console.log(JSON.stringify(err))
       })
   } 
+
+
+uploadImage = (data) => 
+{
+  const options = fetchHelper.makeOptions("POST");
+  fetch(URL + 'api/image', {
+      method: 'POST',
+      body: data
+  })
+}
 }
 
 let addressStore = new AddressStore();

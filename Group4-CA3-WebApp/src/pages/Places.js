@@ -24,7 +24,6 @@ class Places extends Component {
 
   render() {
     const places = this.state.data;
-
     return (
       <div className="container">
 
