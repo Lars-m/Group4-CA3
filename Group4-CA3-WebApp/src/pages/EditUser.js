@@ -33,18 +33,29 @@ class EditUser extends Component {
     }
 
     deleteUser = () => {
+      adminData.deleteUser((err) => {
+      if (err) {
+        return this.setState({ err: err.errorMessage });
+      }
+        this.setState({ err: "" });
+        this.props.history.push("/userlist");
+     });
+      
+    }
 
-      this.redirect();
+    editUser = () => {
+      ((err) => {
+      if (err) {
+        return this.setState({ err: err.errorMessage });
+      }
+        this.setState({ err: "" });
+        render();
+     });
     }
 
     componentWillMount() {
-      userData.getData((e,data)=>{
-        if(e){
-          return this.setState({err:e.err})
-        }
-        this.setState({err:"",data});
-      });
     }
+
     render() {
       return (
         <div>

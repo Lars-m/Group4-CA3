@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import adressData from "../facades/addressFacade";
+import adminData from "../facades/adminFacade";
 import { Link } from 'react-router-dom';
 
 
@@ -11,7 +11,7 @@ class UserList extends Component {
   }
 
   componentWillMount() {
-    adressData.getData((e, data) => {
+    adminData.getUsers((e, data) => {
       if (e) {
         return this.setState({ err: e.err })
       }
@@ -20,16 +20,16 @@ class UserList extends Component {
   }
 
      render() {
-    const listItems = this.state.data.map((d) => <li key ={d.city} >  {d.city} {d.street} {d.zip} {d.description}</li>);
+    const listItems = this.state.data.map((d) => <li key ={d.username} >  {d.username} </li>);
 
     return (
       <div>
       <ul>
             {
                 this.state.data.map(p => (
-                    <li key={p.city}>
-                    {p.city}
-                      <Link to={`/userlist/${p.city}`} activeClassName="active">edit</Link>
+                    <li key={p.username}>
+                    {p.username}
+                      <Link to={`/userlist/${p.username}`} activeClassName="active">edit</Link>
                     </li>
                 ))
             }
