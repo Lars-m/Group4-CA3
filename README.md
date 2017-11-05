@@ -8,3 +8,7 @@ Deployed WebApp is up and running along with the DB, Server deployment & mySQL i
 - Front-end code is improved with Backend code completed. 
 - More features concerning Geolocation especially MobileApp are yet to come. 
 - Lower priority issues concerning style of Front-end and features are yet to be implemented. 
+
+LINK for Google .doc: 
+Required documentation for CA3 ~ 
+https://docs.google.com/document/d/1nlEeE_gKm_TetLNIic6sdfjhTb73R0Hhuu54vbx4GjQ/edit 
