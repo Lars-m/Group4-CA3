@@ -67,9 +67,9 @@ public class UserFacade implements IUserFacade
     }
 
     /**
-     * 
-     * @param user
-     * @return
+     * Creates new User.
+     * @param user User entity.
+     * @return User Entity.
      */
     public IUser createUser(User user){
         EntityManager em = getEntityManager();
@@ -79,9 +79,9 @@ public class UserFacade implements IUserFacade
         return user;
     }
 
-    /*
-      Gets all Users.
-      @returns: List of Users.
+    /**
+     * Gets all users.
+     * @return List of Users.
      */
     public List<IUser> getAllUsers(){
         EntityManager em = getEntityManager();
