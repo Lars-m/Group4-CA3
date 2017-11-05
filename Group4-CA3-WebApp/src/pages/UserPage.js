@@ -24,18 +24,10 @@ class UserPage extends Component {
       return (
         <div>
           <h2>Users</h2>
-          <p>This message is fetched from the server if you are properly logged in</p>
           
-          <div className="msgFromServer">
             {this.state.data}  
-          </div>
-          { this.state.err && ( 
-            <div className="alert alert-danger errmsg-left" role="alert"> 
-              {this.state.err}
+       
             </div>
-          )}
-         
-        </div>
       )
     }
 

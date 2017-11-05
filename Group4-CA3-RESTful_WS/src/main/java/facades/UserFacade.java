@@ -8,6 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.Query;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.core.Response;
 import security.IUser;
@@ -42,6 +44,15 @@ public class UserFacade implements IUserFacade
     {
       em.close();
     }
+  }
+  
+  public User getUser(String username)
+  {
+    EntityManager em = getEntityManager();
+    Query sqlQuery = em.createQuery("SELECT c FROM SEED_USER c WHERE c.userName = :username", User.class)
+                .setParameter("username", username);
+
+        return (User) sqlQuery.getSingleResult();
   }
 
   /*
@@ -80,7 +91,31 @@ public class UserFacade implements IUserFacade
    */
   public List<IUser> getAllUsers(){
       EntityManager em = getEntityManager();
-      List<IUser> userList = em.createQuery("Select c from USERS c").getResultList();
+      List<IUser> userList = em.createQuery("Select c from SEED_USER c").getResultList();
       return userList;
   }
+  
+   public User deleteUser(int userId) throws EntityNotFoundException {
+        EntityManager em = emf.createEntityManager();
+        User user = em.find(User.class, userId);
+        if (user == null) {
+            throw new EntityNotFoundException("User: "+userId+" missing");
+        }
+        em.getTransaction().begin();
+        em.remove(user);
+        em.getTransaction().commit();
+        return user;
+    }
+  
+     public User editUser(User user) throws EntityNotFoundException {
+        EntityManager em = emf.createEntityManager();
+        User editUser = em.find(User.class, user.getUserName());
+        if (editUser == null) {
+            throw new EntityNotFoundException("User: "+user.getUserName()+" missing");
+        }
+        em.getTransaction().begin();
+        em.merge(user);
+        em.getTransaction().commit();
+        return user;
+    }
 }

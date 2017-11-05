@@ -7,8 +7,7 @@ class AddressStore {
     this._data = "";
     this._errorMessage = "";
   }
-
-  getData = (cb) => {
+getData = (cb) => {
     this._errorMessage = "";
     this._messageFromServer = "";
     let resFromFirstPromise=null;  //Pass on response the "second" promise so we can read errors from server

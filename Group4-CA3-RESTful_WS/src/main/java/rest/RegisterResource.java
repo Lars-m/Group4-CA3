@@ -44,11 +44,12 @@ public class RegisterResource {
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
-        @GET
-      @Produces(MediaType.APPLICATION_JSON)
-      public String gt() {
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String gt() 
+    {
         return "{\"REG\" : \"USEr\"}";
-      }
+    }
   
     @POST
     @Produces(MediaType.APPLICATION_JSON)
