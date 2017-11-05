@@ -84,7 +84,6 @@ public class Place implements Serializable {
     public void setRating(int rating) { this.rating = rating; }
 
 
-
     @Override
     public int hashCode()
     {

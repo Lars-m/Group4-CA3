@@ -37,18 +37,4 @@ public class FileUploadResource
         String status = "{\"status\":\"uploaded\"}";
         return Response.ok(status).build();
     }
-
-    private void saveFile(InputStream is, String fileLocation) throws IOException
-    {
-        String location = FILE_LOCATION + fileLocation;
-        try (OutputStream os = new FileOutputStream(new File(location)))
-        {
-            byte[] buffer = new byte[256];
-            int bytes = 0;
-            while ((bytes = is.read(buffer)) != -1)
-            {
-                os.write(buffer, 0, bytes);
-            }
-        }
-    }
 }
