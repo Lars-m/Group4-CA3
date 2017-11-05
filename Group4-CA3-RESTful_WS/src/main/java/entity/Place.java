@@ -71,6 +71,11 @@ public class Place implements Serializable {
         this.zip = zip;
     }
 
+    private String imageUrl;
+
+    public String getImageUrl() { return imageUrl; }
+
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
     @Override
     public int hashCode()
