@@ -3,7 +3,6 @@ import adressData from "../facades/addressFacade";
 import { Link } from 'react-router-dom';
 
 
-
 class UserList extends Component {
 
   constructor() {
@@ -30,14 +29,14 @@ class UserList extends Component {
                 this.state.data.map(p => (
                     <li key={p.city}>
                     {p.city}
-                      <Link to={`/userlist/${p.city}`}>edit</Link>
+                      <Link to={`/userlist/${p.city}`} activeClassName="active">edit</Link>
                     </li>
                 ))
             }
         </ul>
       </div>
     )
-  }
+  } 
 }
 
 export default UserList;

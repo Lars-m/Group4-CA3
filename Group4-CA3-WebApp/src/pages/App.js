@@ -23,8 +23,8 @@ function App() {
         <Route path="/admin" component={AdminPage} />
         <Route path="/register" component={Register} />
         <Route path="/address" component={Address} />
-        <Route path="/userlist" component={UserList} />
-        <Route path="/userlist/:username" component={EditUser}/>
+        <Route exact path="/userlist" component={UserList} />
+        <Route path="/userlist/:name" component={EditUser} />
       </Switch>
     </div>
   )
