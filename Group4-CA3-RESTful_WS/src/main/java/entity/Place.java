@@ -77,6 +77,14 @@ public class Place implements Serializable {
 
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
+    private int rating;
+
+    public int getRating() { return rating; }
+
+    public void setRating(int rating) { this.rating = rating; }
+
+
+
     @Override
     public int hashCode()
     {
